@@ -1,0 +1,65 @@
+{% extends "socnet/base.html" %}
+
+{% block content %}
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <!-- XDSoft DateTimePicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            <h2>Create A Team</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">Name</label>
+                    <input type="text" name="title" class="form-control" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="memo">Description</label>
+                    <textarea name="memo" class="form-control" id="memo" ></textarea>
+                </div>
+               <select class="custom-select">
+                   <option selected>Choose Sport</option>
+                   <option value="Football">Football</option>
+                   <option value="Basketball">Basketball</option>
+                   <option value="3" disabled>In The Future</option>
+               </select>
+
+
+                <div class="form-date">
+                    {{ form.date }}
+                    <input id="datetimepicker" type="text">
+                    <script>
+                      $(function () {
+                        $("#id_date").datetimepicker({
+                          format: 'd/m/Y H:i',
+                        });
+                      });
+                    </script>
+                </div>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary">Create A Team</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+© 2021 GitHub, Inc.
+Terms

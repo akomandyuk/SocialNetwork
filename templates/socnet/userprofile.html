@@ -1,0 +1,36 @@
+{% extends "socnet/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="header-bar">
+        <h1>Profile</h1>
+
+        <a href="{% url 'homepage' %}">&#8592; Back</a>
+
+    </div>
+
+    <div class="card-body">
+    {% if user.profile.profile_pic %}
+      <img src="{{ profile.profile_pic.url }}" height=100 width=100><br><br>
+    {% else %}
+      <img src="{% static 'static\user.png' %}" height=100 width=100><br><br>
+    {% endif %}
+      <p><strong>Username:</strong> {{ page_user }}</p><br><br>
+      <p><strong>Bio:</strong> {{ profile.bio }}</p><br><br>
+      <p><strong>Name:</strong> {{ profile.name }}</p><br><br>
+      <p><strong>Surname:</strong> {{ profile.surname }}</p><br><br>
+      <p><strong>Birthday:</strong> {{ profile.birthday }}</p><br><br>
+      <p><strong>Gender:</strong> {{ profile.gender }}</p><br><br>
+      <p><strong>Email:</strong> {{ profile.email }}</p><br><br>
+      <p><strong>Profile Picture:</strong> {{ profile.profile_pic }}</p><br><br>
+      {% if user.id == profile.user.id %}
+      <a href="{% url 'edit_user_profile' profile.id %}"><button class="button">Edit</button></a>
+      {% endif %}
+
+
+
+    </div>
+
+{% endblock content %}
